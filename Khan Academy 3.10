@@ -1,4 +1,4 @@
-/* Khan Academy Project: Famous People - I created two tables and join them on the primary key of the movie star full name and show the awards and their most famous film */
+/* Khan Academy Project: Famous People - I created two tables and joined them on the primary key of the movie star full name and show the awards and their most famous film */
 
 CREATE TABLE movie_stars (id INTEGER PRIMARY KEY,
     fullname TEXT,
