@@ -1,0 +1,47 @@
+/* Khan Academy Project: Famous People - I created two tables and join them on the primary key of the movie star full name and show the awards and their most famous film */
+
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY,
+    fullname TEXT,
+    age INTEGER)
+    ;
+
+INSERT INTO movie_stars (fullname, age) VALUES ("Keanu Reeves", "58");
+INSERT INTO movie_stars (fullname, age) VALUES ("Matt LeBlanc", "55");
+INSERT INTO movie_stars (fullname, age) VALUES ("Sarah Hyland", "32");
+INSERT INTO movie_stars (fullname, age) VALUES ("Kaley Cuoco", "37");
+INSERT INTO movie_stars (fullname, age) VALUES ("Cobie Smulders", "40");
+
+
+CREATE TABLE best_work (id INTEGER PRIMARY KEY, actor_id INTEGER, title TEXT, movie_year INTEGER);
+
+INSERT INTO best_work (actor_id, title, movie_year)
+    VALUES (1, "Matrix", 1999);
+INSERT INTO best_work (actor_id, title, movie_year)
+    VALUES (2, "Friends", 1994);
+INSERT INTO best_work (actor_id, title, movie_year)
+    VALUES (3, "Modern Family", 2009);
+INSERT INTO best_work (actor_id, title, movie_year)
+    VALUES (4, "The Big Bang Theory", 2007);
+INSERT INTO best_work (actor_id, title, movie_year)
+    VALUES (5, "How I Met Your Mother", 2005);
+    
+
+CREATE TABLE awards (id INTEGER PRIMARY KEY, movie_id INTEGER, actor_id INTEGER, grammy TEXT, oscar TEXT);
+
+INSERT INTO awards (movie_id, actor_id, oscar)
+    VALUES (1, 1, "yes");
+INSERT INTO awards (movie_id, actor_id, oscar)
+    VALUES (2, 2,"no");
+INSERT INTO awards (movie_id, actor_id, grammy)
+    VALUES (3, 3,"yes");
+INSERT INTO awards (movie_id, actor_id, grammy)
+    VALUES (4, 4,"yes");
+INSERT INTO awards (movie_id, actor_id, grammy)
+    VALUES (5, 5,"no");
+
+    
+SELECT movie_stars.fullname, best_work.title, best_work.movie_year, awards.grammy, awards.oscar FROM awards
+    JOIN movie_stars
+    ON awards.actor_id = movie_stars.id
+    JOIN best_work
+    ON awards.movie_id = best_work.id;
